@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">movie</string>
+    <string name="search_hint"></string>
+    <string name="home">home</string>
+    <string name="movie">movie</string>
+    <string name="user">user</string>
+    <string name="play_no_score">It is no score</string>
+    <string name="detail_plot">plot</string>
+    <string name="detail_star">star</string>
+    <string name="your_like">your like</string>
+    <string name="recommend">recommend</string>
+    <string name="home_hot">hot</string>
+    <string name="home_play">prevue</string>
+    <string name="home_new">latest</string>
+    <string name="home_classify">classify</string>
+    <string name="user_day">user day</string>
+    <string name="user_favorite_count">favorite</string>
+    <string name="search">search</string>
+    <string name="search_record">search record</string>
+    <string name="search_record_no_data">search record no data</string>
+    <string name="user_avater">Avater</string>
+    <string name="user_username">Username</string>
+    <string name="user_tel">Tel</string>
+    <string name="user_email">Email</string>
+    <string name="user_birthday">Birthday</string>
+    <string name="user_sex">Sex</string>
+    <string name="user_sign">Sign</string>
+    <string name="user_region">Region</string>
+    <string name="user_logout">Log out</string>
+    <string name="user_signin">Sign in</string>
 </resources>

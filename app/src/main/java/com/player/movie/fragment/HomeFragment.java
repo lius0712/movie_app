@@ -47,12 +47,6 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-
-    /**
-     * @author: wuwenqiang
-     * @description: 获取用户信息
-     * @date: 2021-12-04 15:59
-     */
     private void getUserData(){
         Call<ResultEntity> userData = RequestUtils.getInstance().getUserData();
         userData.enqueue(new Callback<ResultEntity>() {
@@ -75,11 +69,6 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    /**
-     * @author: wuwenqiang
-     * @description: 获取banner图片
-     * @date: 2021-12-07 23:32
-     */
     public void getBannerData(){
         Call<ResultEntity> categoryListService = RequestUtils.getInstance().getCategoryList("轮播","电影");
         categoryListService.enqueue(new Callback<ResultEntity>() {
@@ -106,11 +95,6 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    /**
-     * @author: wuwenqiang
-     * @description: 按页面获取要展示的category小类
-     * @date: 2021-12-07 23:32
-     */
     public void getAllCategoryListByPageName(){
         Call<ResultEntity> categoryListService = RequestUtils.getInstance().getAllCategoryListByPageName("首页");
         categoryListService.enqueue(new Callback<ResultEntity>() {

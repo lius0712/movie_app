@@ -9,4 +9,8 @@
     <color name="background_dark">#bbb</color>
     <color name="background_blue">#1890ff</color>
     <color name="background_movie_item">#eee</color>
+    <color name="red">#ff0000</color>
+    <color name="main_font_color">#000</color>
+    <color name="background_white">#ffffff</color>
+    <color name="page_background_color">#eee</color>
 </resources>
