@@ -1,16 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Movie</string>
-    <string name="logo">Movie</string>
-    <string name="title">Movie</string>
-    <string name="phonenumber">Email</string>
-    <string name="inputphonenumber">please input your email</string>
-    <string name="password">Password</string>
-    <string name="inputpassword">please input your password</string>
-    <string name="getpasswordback">Register</string>
-    <string name="phonefastlogin">Forgot password</string>
-    <string name="login">Sign in</string>
-    <string name="Facebook">Facebook</string>
-    <string name="Google">Google</string>
-    <string name="fastlogin">--Log in to your social account--</string>
+
 </resources>

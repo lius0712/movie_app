@@ -87,6 +87,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="30dp"
+        android:id="@+id/sign"
         android:text="@string/user_signin"
         android:background="@drawable/btn_radius_red_decoration"
         android:textSize="17sp" />

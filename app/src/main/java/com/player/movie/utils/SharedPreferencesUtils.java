@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.player.movie.BaseApplication;
-import com.player.movie.activity.MainActivity;
-
 
 
 /**

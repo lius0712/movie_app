@@ -48,25 +48,25 @@ public class HomeFragment extends Fragment {
     }
 
     private void getUserData(){
-        Call<ResultEntity> userData = RequestUtils.getInstance().getUserData();
-        userData.enqueue(new Callback<ResultEntity>() {
-            @Override
-            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
-                Gson gson = new Gson();
-                UserEntity userEntity = gson.fromJson(gson.toJson(response.body().getData()),UserEntity.class);
-                String avaterUrl = Api.HOST + userEntity.getAvater();
-                System.out.println(avaterUrl);
-                SharedPreferencesUtils.setParam("token",response.body().getToken());
-                Glide.with(getContext()).load(avaterUrl).into((RoundedImageView)view.findViewById(R.id.avater));
-                getBannerData();
-                getAllCategoryListByPageName();
-            }
-
-            @Override
-            public void onFailure(Call<ResultEntity> call, Throwable t) {
-                System.out.println("错误");
-            }
-        });
+//        Call<ResultEntity> userData = RequestUtils.getInstance().getUserData();
+//        userData.enqueue(new Callback<ResultEntity>() {
+//            @Override
+//            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
+//                Gson gson = new Gson();
+//                UserEntity userEntity = gson.fromJson(gson.toJson(response.body().getData()),UserEntity.class);
+//                String avaterUrl = Api.HOST + userEntity.getAvater();
+//                System.out.println(avaterUrl);
+//                SharedPreferencesUtils.setParam("token",response.body().getToken());
+//                Glide.with(getContext()).load(avaterUrl).into((RoundedImageView)view.findViewById(R.id.avater));
+//                getBannerData();
+//                getAllCategoryListByPageName();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResultEntity> call, Throwable t) {
+//                System.out.println("错误");
+//            }
+//        });
     }
 
     public void getBannerData(){

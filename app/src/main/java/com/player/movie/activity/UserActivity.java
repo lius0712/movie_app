@@ -88,11 +88,6 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /**
-     * @author: wuwenqiang
-     * @description: 跳转到编辑页面
-     * @date: 2022-08-31 22:06
-     */
     private void useEdit(View v){
         LinearLayout ly = (LinearLayout)v;
         TextView nameTextView = (TextView) ly.getChildAt(0);
@@ -105,14 +100,9 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         //startActivity(intent);
     }
 
-    /**
-     * @author: wuwenqiang
-     * @description: 跳转到登录页，前面所有页面置空
-     * @date: 2022-08-31 22:06
-     */
     private void logout(){
-        //Intent intent = new Intent(this,LoginActivity.class);
-        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);// 前面所有页面置空
-        //startActivity(intent);
+        Intent intent = new Intent(this,LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);// 前面所有页面置空
+        startActivity(intent);
     }
 }
