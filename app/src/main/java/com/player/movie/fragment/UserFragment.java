@@ -32,6 +32,7 @@ public class UserFragment extends Fragment{
                 switch (v.getId()){
                     case R.id.user_logout:
                         logout();
+                        break;
                     default:
                         break;
                 }

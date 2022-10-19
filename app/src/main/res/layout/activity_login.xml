@@ -87,7 +87,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="30dp"
-        android:id="@+id/sign"
+        android:id="@+id/signIn"
         android:text="@string/user_signin"
         android:background="@drawable/btn_radius_red_decoration"
         android:textSize="17sp" />
@@ -98,6 +98,7 @@
         android:layout_marginTop="20dp" >
 
         <TextView
+            android:id="@+id/register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"

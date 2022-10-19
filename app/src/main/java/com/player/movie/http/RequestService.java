@@ -7,6 +7,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface RequestService {
+
+
+
     @GET(Api.GETUSERDATA)
     Call<ResultEntity> getUserData();
 
@@ -15,4 +18,6 @@ public interface RequestService {
 
     @GET(Api.GETALLCATEGORYLISTBYPAGENAME)
     Call<ResultEntity> getAllCategoryListByPageName(@Query("pageName")String pageName);
+
+
 }
