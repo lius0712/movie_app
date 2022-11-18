@@ -93,12 +93,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         res.enqueue(new Callback<UserEntity>() {
             @Override
             public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
-                Toast.makeText(RegisterActivity.this,"注册成功，请登录",Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this,"register successful，please login",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<UserEntity> call, Throwable t) {
-                Toast.makeText(RegisterActivity.this,"请求失败，请重新注册",Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this,"request failed，please register again",Toast.LENGTH_SHORT).show();
             }
         });
 

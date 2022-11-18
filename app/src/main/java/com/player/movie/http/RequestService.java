@@ -18,7 +18,7 @@ public interface RequestService {
     Call<UserEntity> register(@Body UserEntity user);
 
     @POST(Api.LOGIN)
-    Call<ResultEntity> login(@Body UserEntity user);
+    Call<UserEntity> login(@Body UserEntity user);
 
     @GET(Api.GETUSERDATA)
     Call<ResultEntity> getUserData();

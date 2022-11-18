@@ -36,6 +36,7 @@
             android:textSize="17sp" />
 
         <EditText
+            android:id="@+id/Name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -44,7 +45,7 @@
             android:background="@android:color/transparent"
             android:hint="@string/inputusername"
             android:maxLength="11"
-            android:inputType="phone"
+            android:inputType="text"
             android:textSize="17sp" />
     </LinearLayout>
 
@@ -69,6 +70,7 @@
             android:textSize="17sp" />
 
         <EditText
+            android:id="@+id/Password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -82,12 +84,12 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/signIn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/md_btn_height"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="30dp"
-        android:id="@+id/signIn"
         android:text="@string/user_signin"
         android:background="@drawable/btn_radius_red_decoration"
         android:textSize="17sp" />
