@@ -31,8 +31,8 @@
 
     <string name="logo">Movie</string>
     <string name="title">Movie</string>
-    <string name="phonenumber">Email</string>
-    <string name="inputphonenumber">please input your email</string>
+    <string name="username">Name</string>
+    <string name="inputusername">please input your name</string>
     <string name="password">Password</string>
     <string name="inputpassword">please input your password</string>
     <string name="getpasswordback">Register</string>

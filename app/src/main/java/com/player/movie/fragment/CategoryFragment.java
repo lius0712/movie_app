@@ -60,7 +60,7 @@ public class CategoryFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResultEntity> call, Throwable t) {
-                System.out.println("错误");
+                System.out.println("error");
             }
         });
     }

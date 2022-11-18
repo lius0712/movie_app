@@ -1,40 +1,22 @@
 package com.player.movie.entity;
 
 public class UserEntity {
-    private String userId;
-    private String createDate;
-    private String updateDate;
+    private String useid;
     private String  username;
     private String  telephone;
     private String  email;
     private String  avater;
     private String  birthday;
-    private String  sex;
+    private Integer  sex;
     private String  role;
-    private String  password;
+    private String  passwd;
 
     public String getUserId() {
-        return userId;
+        return useid;
     }
 
     public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
-    }
-
-    public String getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(String updateDate) {
-        this.updateDate = updateDate;
+        this.useid = userId;
     }
 
     public String getUsername() {
@@ -77,11 +59,11 @@ public class UserEntity {
         this.birthday = birthday;
     }
 
-    public String getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
@@ -94,10 +76,10 @@ public class UserEntity {
     }
 
     public String getPassword() {
-        return password;
+        return passwd;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.passwd = password;
     }
 }

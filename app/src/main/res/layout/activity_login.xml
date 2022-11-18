@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:text="@string/phonenumber"
+            android:text="@string/username"
             android:textColor="#838383"
             android:textSize="17sp" />
 
@@ -42,7 +42,7 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="@string/inputphonenumber"
+            android:hint="@string/inputusername"
             android:maxLength="11"
             android:inputType="phone"
             android:textSize="17sp" />

@@ -1,14 +1,24 @@
 package com.player.movie.http;
 
 import com.player.movie.api.Api;
+import com.player.movie.entity.UserEntity;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface RequestService {
 
+    @POST(Api.REGISTER)
+    Call<UserEntity> register(@Body UserEntity user);
 
+    @POST(Api.LOGIN)
+    Call<ResultEntity> login(@Body UserEntity user);
 
     @GET(Api.GETUSERDATA)
     Call<ResultEntity> getUserData();
