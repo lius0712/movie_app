@@ -43,45 +43,54 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.home_fragment,container,false);
-        getUserData();
+        //getUserData();
+        getBannerData();
+        getAllCategoryListByPageName();
         return view;
     }
 
     private void getUserData(){
-//        Call<ResultEntity> userData = RequestUtils.getInstance().getUserData();
-//        userData.enqueue(new Callback<ResultEntity>() {
-//            @Override
-//            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
-//                Gson gson = new Gson();
-//                UserEntity userEntity = gson.fromJson(gson.toJson(response.body().getData()),UserEntity.class);
-//                String avaterUrl = Api.HOST + userEntity.getAvater();
-//                System.out.println(avaterUrl);
-//                SharedPreferencesUtils.setParam("token",response.body().getToken());
-//                Glide.with(getContext()).load(avaterUrl).into((RoundedImageView)view.findViewById(R.id.avater));
-//                getBannerData();
-//                getAllCategoryListByPageName();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResultEntity> call, Throwable t) {
-//                System.out.println("错误");
-//            }
-//        });
+        Call<ResultEntity> userData = RequestUtils.getInstance().getUserData();
+        userData.enqueue(new Callback<ResultEntity>() {
+            @Override
+            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
+                Gson gson = new Gson();
+                UserEntity userEntity = gson.fromJson(gson.toJson(response.body().getData()),UserEntity.class);
+                String avaterUrl = Api.HOST + userEntity.getAvater();
+                System.out.println(avaterUrl);
+                SharedPreferencesUtils.setParam("token",response.body().getToken());
+                Glide.with(getContext()).load(avaterUrl).into((RoundedImageView)view.findViewById(R.id.avater));
+                getBannerData();
+                getAllCategoryListByPageName();
+            }
+
+            @Override
+            public void onFailure(Call<ResultEntity> call, Throwable t) {
+                System.out.println("error");
+            }
+        });
     }
 
     public void getBannerData(){
-        Call<ResultEntity> categoryListService = RequestUtils.getInstance().getCategoryList("轮播","电影");
+        Call<ResultEntity> categoryListService = RequestUtils.getInstance().getCategoryList("carousel","Movie");
         categoryListService.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
+                //System.out.println(JSON.toJSONString(response.body().getData()));
+                //String imgName = (String) JSON.parseObject( JSON.toJSONString(response.body().getData()) ).get("localImg");
+                //System.out.println(imgName);
                 List<MovieEntity> movieEntity = JSON.parseArray(JSON.toJSONString(response.body().getData()),MovieEntity.class);
+//                List<MovieEntity> movieEntity = new ArrayList<>();
+//                MovieEntity movie = new MovieEntity();
+//                movie.setLocalImg(imgName);
+//                movieEntity.add(movie);
                 Banner banner = view.findViewById(R.id.banner);
                 banner.setAdapter(new BannerImageAdapter<MovieEntity>(movieEntity) {
                     @Override
                     public void onBindView(BannerImageHolder holder, MovieEntity movieEntity, int position, int size) {
                         //图片加载自己实现
                         Glide.with(holder.imageView)
-                                .load(Api.HOST + movieEntity.getLocalImg())
+                                .load(Api.HOSTIMG + movieEntity.getLocalImg())
                                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
                                 .into(holder.imageView);
                     }
@@ -90,24 +99,24 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResultEntity> call, Throwable t) {
-                System.out.println("错误");
+                System.out.println("error");
             }
         });
     }
 
     public void getAllCategoryListByPageName(){
-        Call<ResultEntity> categoryListService = RequestUtils.getInstance().getAllCategoryListByPageName("首页");
+        Call<ResultEntity> categoryListService = RequestUtils.getInstance().getAllCategoryListByPageName("home");
         categoryListService.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
                 List<CategoryEntity> categoryEntities = JSON.parseArray(JSON.toJSONString(response.body().getData()), CategoryEntity.class);
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                for(CategoryEntity categoryEntity:categoryEntities){
+                for(CategoryEntity category:categoryEntities){
                     CategoryFragment categoryFragment = new CategoryFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putString("category", categoryEntity.getCategory());
-                    bundle.putString("classify", categoryEntity.getClassify());
+                    bundle.putString("category", category.getCategory());
+                    bundle.putString("classify", category.getClassify());
                     categoryFragment.setArguments(bundle);
                     transaction.add(R.id.category_layout, categoryFragment);
                 }
@@ -116,7 +125,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResultEntity> call, Throwable t) {
-                System.out.println("错误");
+                System.out.println("error");
             }
         });
     }

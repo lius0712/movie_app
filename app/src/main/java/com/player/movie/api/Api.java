@@ -1,15 +1,17 @@
 package com.player.movie.api;
 
 public class Api {
-    public static final String HOST = "http://10.28.253.144:8090/";
+    //public static final String HOST = "http://10.28.253.144:8090/";
+    public static final String HOST = "http:// :8090/";
+    public static final String HOSTIMG = "http:// /";
     //查询所有大分类
-    public static final String GETUSERDATA = "/service/movie/getUserData";
-    public static final String GETCATEGORYLIST = "/service/movie/getCategoryList";// 获取分类影片
-    public static final String GETKEYWORD = "/service/movie/getKeyWord";//按照classify查询搜索栏的关键词
-    public static final String GETALLCATEGORYBYCLASSIFY =  "/service/movie/getAllCategoryByClassify";//按classify大类查询所有catory小类
-    public static final String GETALLCATEGORYLISTBYPAGENAME =  "/service/movie/getAllCategoryListByPageName"; //按页面获取要展示的category小类
+    public static final String GETUSERDATA = "service/movie/getUserData";
+    public static final String GETCATEGORYLIST = "movies/getCategoryList";// 获取分类影片
+    public static final String GETKEYWORD = "movies/getKeyWord";//按照classify查询搜索栏的关键词
+    public static final String GETALLCATEGORYBYCLASSIFY =  "movies/getAllCategoryByClassify";//按classify大类查询所有catory小类
+    public static final String GETALLCATEGORYLISTBYPAGENAME =  "movieCategory/getAllCategoryListByPageName"; //按页面获取要展示的category小类
     public static final String GETUSERMSG =  "/service/movie-getway/getUserMsg"; //获取用户四个指标信息，使用天数，关注，观看记录，浏览记录
-    public static final String GETSEARCHRESULT =  "/service/movie/search"; //搜索
+    public static final String GETSEARCHRESULT =  "movies/search"; //搜索
     public static final String LOGIN =  "users/login"; //login
     public static final String REGISTER =  "users/"; //register
     public static final String GETSTAR =  "/service/movie/getStar/"; //获取演员

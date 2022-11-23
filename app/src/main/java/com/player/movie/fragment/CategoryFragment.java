@@ -52,6 +52,7 @@ public class CategoryFragment extends Fragment {
         categoryListService.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
+                //System.out.println(JSON.toJSONString(response.body().getData()));
                 List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()),MovieEntity.class);
                 RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(movieEntityList);
                 RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
