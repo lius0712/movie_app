@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.fastjson.JSON;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.player.movie.R;
+import com.player.movie.adapter.CategoryRecyclerViewAdapter;
 import com.player.movie.adapter.RecyclerViewAdapter;
 import com.player.movie.api.Api;
 import com.player.movie.entity.MovieEntity;
@@ -41,7 +43,7 @@ public class CategoryFragment extends Fragment {
         //这里就拿到了之前传递的参数
         String category = bundle.getString("category");
         String classify = bundle.getString("classify");
-        TextView textView = view.findViewById(R.id.category_name);
+        TextView textView = view.findViewById(R.id.category_title).findViewById(R.id.module_title);
         textView.setText(category);
         getCategoryData(category,classify);
         return view;
@@ -52,10 +54,12 @@ public class CategoryFragment extends Fragment {
         categoryListService.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
-                //System.out.println(JSON.toJSONString(response.body().getData()));
                 List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()),MovieEntity.class);
-                RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(movieEntityList);
-                RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+                CategoryRecyclerViewAdapter recyclerViewAdapter = new CategoryRecyclerViewAdapter(movieEntityList,getContext());
+                LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());  //LinearLayoutManager中定制了可扩展的布局排列接口，子类按照接口中的规范来实现就可以定制出不同排雷方式的布局了
+                layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                RecyclerView recyclerView = view.findViewById(R.id.movie_recycler_view);
+                recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(recyclerViewAdapter);
             }
 

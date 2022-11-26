@@ -43,32 +43,16 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.home_fragment,container,false);
-        //getUserData();
+        addSearchFraction();
         getBannerData();
         getAllCategoryListByPageName();
         return view;
     }
 
-    private void getUserData(){
-        Call<ResultEntity> userData = RequestUtils.getInstance().getUserData();
-        userData.enqueue(new Callback<ResultEntity>() {
-            @Override
-            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
-                Gson gson = new Gson();
-                UserEntity userEntity = gson.fromJson(gson.toJson(response.body().getData()),UserEntity.class);
-                String avaterUrl = Api.HOST + userEntity.getAvater();
-                System.out.println(avaterUrl);
-                SharedPreferencesUtils.setParam("token",response.body().getToken());
-                Glide.with(getContext()).load(avaterUrl).into((RoundedImageView)view.findViewById(R.id.avater));
-                getBannerData();
-                getAllCategoryListByPageName();
-            }
-
-            @Override
-            public void onFailure(Call<ResultEntity> call, Throwable t) {
-                System.out.println("error");
-            }
-        });
+    private void addSearchFraction(){
+        FragmentTransaction transaction =  getFragmentManager().beginTransaction();
+        transaction.replace(R.id.home_search_layout,new SearchFragment(getResources().getString(R.string.movie)))
+                .commit();
     }
 
     public void getBannerData(){
@@ -76,15 +60,8 @@ public class HomeFragment extends Fragment {
         categoryListService.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
-                //System.out.println(JSON.toJSONString(response.body().getData()));
-                //String imgName = (String) JSON.parseObject( JSON.toJSONString(response.body().getData()) ).get("localImg");
-                //System.out.println(imgName);
                 List<MovieEntity> movieEntity = JSON.parseArray(JSON.toJSONString(response.body().getData()),MovieEntity.class);
-//                List<MovieEntity> movieEntity = new ArrayList<>();
-//                MovieEntity movie = new MovieEntity();
-//                movie.setLocalImg(imgName);
-//                movieEntity.add(movie);
-                Banner banner = view.findViewById(R.id.banner);
+                Banner banner = view.findViewById(R.id.home_banner);
                 banner.setAdapter(new BannerImageAdapter<MovieEntity>(movieEntity) {
                     @Override
                     public void onBindView(BannerImageHolder holder, MovieEntity movieEntity, int position, int size) {
@@ -118,7 +95,7 @@ public class HomeFragment extends Fragment {
                     bundle.putString("category", category.getCategory());
                     bundle.putString("classify", category.getClassify());
                     categoryFragment.setArguments(bundle);
-                    transaction.add(R.id.category_layout, categoryFragment);
+                    transaction.add(R.id.home_category_layout, categoryFragment);
                 }
                 transaction.commit();
             }

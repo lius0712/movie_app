@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.player.movie.R;
 
-public class TVFragment extends Fragment {
+public class RecommendFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

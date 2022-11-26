@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.player.movie.R;
 import com.player.movie.fragment.HomeFragment;
 import com.player.movie.fragment.MovieFragment;
-import com.player.movie.fragment.TVFragment;
+import com.player.movie.fragment.RecommendFragment;
 import com.player.movie.fragment.UserFragment;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //初始化4个切换页
     HomeFragment homeFragment;
     MovieFragment movieFragment;
-    TVFragment tvFragment;
+    RecommendFragment recommendFragment;
     UserFragment userFragment;
 
     @Override
@@ -63,13 +63,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //初始化4个切换页
         homeFragment = new HomeFragment();
         movieFragment = new MovieFragment();
-        tvFragment = new TVFragment();
+        recommendFragment = new RecommendFragment();
         userFragment = new UserFragment();
 
         //把4个切换页添加到容器内
         listFragment.add(homeFragment);
         listFragment.add(movieFragment);
-        listFragment.add(tvFragment);
+        listFragment.add(recommendFragment);
         listFragment.add(userFragment);
 
         //导航栏布局栏
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             {
                 tvImg.setImageResource(R.mipmap.icon_tv_active);
                 tvText.setTextColor(color);
-                tvFragment.initData();
+                recommendFragment.initData();
                 break;
             }
             case 3:

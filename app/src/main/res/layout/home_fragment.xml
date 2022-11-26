@@ -1,149 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    style="@style/fragment_layout">
     <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/home_search_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="20dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@mipmap/icon_avater"
-                android:id="@+id/avater"
-                app:riv_oval="true" />
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:background="@drawable/rounded_corner_search_box"
-                >
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:paddingLeft="10dp"
-                    android:layout_marginTop="3dp"
-                    android:textSize="16sp"
-                    android:textColor="#ccc"
-                    android:text="please input movie name"/>
-                <ImageView
-                    android:src="@mipmap/icon_search"
-                    android:scaleType="fitCenter"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"></ImageView>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+        android:layout_height="wrap_content"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:fillViewport="true"
-        android:id="@+id/myScrollView"
-        android:layout_marginTop="10dp"
-        android:scrollbars="none"
-        >
+        android:scrollbars="none">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.youth.banner.Banner
-                android:id="@+id/banner"
+                android:layout_marginTop="@dimen/container_padding_size"
+                android:id="@+id/home_banner"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
-
+                android:layout_height="@dimen/banner_height_size" />
             <LinearLayout
+                android:background="@drawable/border_radius"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/container_padding_size"
+                android:padding="@dimen/container_padding_size"
                 android:layout_height="wrap_content">
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center_horizontal"
+                    android:paddingLeft="-10dp"
                     android:layout_weight="1">
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/home_big_icon_size"
+                        android:layout_height="@dimen/home_big_icon_size"
                         android:src="@mipmap/hot"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="hot"/>
+                        android:text="@string/home_hot"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="12dp"
                     android:layout_weight="1">
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/home_big_icon_size"
+                        android:layout_height="@dimen/home_big_icon_size"
                         android:src="@mipmap/icon_play"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="prevue"/>
+                        android:layout_marginTop="@dimen/small_margin_size"
+                        android:text="@string/home_play"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginLeft="12dp"
                     android:gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
                     android:layout_weight="1">
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/home_big_icon_size"
+                        android:layout_height="@dimen/home_big_icon_size"
                         android:src="@mipmap/latest"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="latest"/>
+                        android:layout_marginTop="@dimen/small_margin_size"
+                        android:text="@string/home_new"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:orientation="vertical"
+                    android:layout_marginLeft="12dp"
                     android:layout_weight="1">
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/home_big_icon_size"
+                        android:layout_height="@dimen/home_big_icon_size"
                         android:src="@mipmap/classify"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="classification"/>
+                        android:layout_marginTop="@dimen/small_margin_size"
+                        android:text="@string/home_classify"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
-                android:id="@+id/category_layout"
+                android:id="@+id/home_category_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </LinearLayout>
