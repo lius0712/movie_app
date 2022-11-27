@@ -24,7 +24,7 @@
     <string name="user_email">Email</string>
     <string name="user_birthday">Birthday</string>
     <string name="user_sex">Sex</string>
-    <string name="user_sign">Sign</string>
+    <string name="user_role">Role</string>
     <string name="user_region">Region</string>
     <string name="user_logout">Log out</string>
     <string name="user_signin">Sign in</string>

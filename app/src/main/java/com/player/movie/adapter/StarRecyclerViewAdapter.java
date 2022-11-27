@@ -17,17 +17,45 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.player.movie.R;
 import com.player.movie.activity.MovieDetailActivity;
 import com.player.movie.api.Api;
-import com.player.movie.entity.MovieEntity;
+import com.player.movie.entity.MovieStarEntity;
 
 import java.util.List;
 
-public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder> implements View.OnClickListener{
+public class StarRecyclerViewAdapter extends RecyclerView.Adapter<StarRecyclerViewAdapter.ViewHolder> implements View.OnClickListener{
 
-    private List<MovieEntity> movieEntityList;
-    private Context context;
-    public CategoryRecyclerViewAdapter(List<MovieEntity> movieEntityList,Context context){
-        this.movieEntityList = movieEntityList;
+    private List<MovieStarEntity>movieStarList;
+    Context context;
+
+    public StarRecyclerViewAdapter(List<MovieStarEntity> movieStarList,Context context){
         this.context = context;
+        this.movieStarList = movieStarList;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_item, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        String path = Api.HOST + movieStarList.get(position).getLocalImg();
+//        String path = movieStarList.get(position).getImg();
+        Glide.with(context).load(path).into(holder.imageView);
+        holder.textView.setText(movieStarList.get(position).getStarName());
+        if(position == movieStarList.size() - 1){
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(0,0,0,0);
+            holder.itemView.setLayoutParams(layoutParams);
+        }
+        holder.itemView.setTag(movieStarList.get(position));
+        holder.itemView.setOnClickListener(this);
+    }
+
+    @Override
+    public int getItemCount() {
+        return movieStarList.size();
     }
 
     @Override
@@ -38,31 +66,6 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         context.startActivity(intent);
     }
 
-    @NonNull
-    @Override
-    public CategoryRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_item, parent, false);
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull CategoryRecyclerViewAdapter.ViewHolder holder, int position) {
-        String path = Api.HOSTIMG + movieEntityList.get(position).getLocalImg();
-        Glide.with(context).load(path).into(holder.imageView);
-        holder.textView.setText(movieEntityList.get(position).getMovieName());
-        holder.itemView.setTag(movieEntityList.get(position));
-        if(position == movieEntityList.size() - 1){
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(0,0,0,0);
-            holder.itemView.setLayoutParams(layoutParams);
-        }
-        holder.itemView.setOnClickListener(this);
-    }
-
-    @Override
-    public int getItemCount() {
-        return movieEntityList.size();
-    }
 
     class ViewHolder extends RecyclerView.ViewHolder{
         public final RoundedImageView imageView;
@@ -73,7 +76,4 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
             textView = itemView.findViewById(R.id.movie_name);
         }
     }
-
 }
-
-

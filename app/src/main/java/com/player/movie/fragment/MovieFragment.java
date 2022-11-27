@@ -62,7 +62,6 @@ public class MovieFragment extends Fragment {
                 banner.setAdapter(new BannerImageAdapter<MovieEntity>(movieEntity) {
                     @Override
                     public void onBindView(BannerImageHolder holder, MovieEntity movieEntity, int position, int size) {
-                        //图片加载自己实现
                         Glide.with(holder.imageView)
                                 .load(Api.HOSTIMG + movieEntity.getLocalImg())
                                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
@@ -80,7 +79,7 @@ public class MovieFragment extends Fragment {
     }
 
     public void getAllCategoryListByPageName(){
-        Call<ResultEntity> categoryListService = RequestUtils.getInstance().getAllCategoryListByPageName("Movie");
+        Call<ResultEntity> categoryListService = RequestUtils.getInstance().getAllCategoryListByPageName("movie");
         categoryListService.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {

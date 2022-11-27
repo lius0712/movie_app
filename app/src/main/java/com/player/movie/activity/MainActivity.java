@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,29 +22,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
-    private ViewPager viewPager;//容器
+    public static String uid = null;
+    private ViewPager viewPager;
     private List<Fragment> listFragment = new ArrayList<Fragment>();
 
-    //导航栏布局栏
     LinearLayout homeLinearLayout;
     LinearLayout movieLinearLayout;
-    LinearLayout tvLinearLayout;
+    LinearLayout recommendLinearLayout;
     LinearLayout userLinearLayout;
 
-    //导航栏图标
     ImageView homeImg;
     ImageView movieImg;
     ImageView  tvImg;
     ImageView userImg;
 
-    //导航栏文字
     TextView homeText;
     TextView movieText;
-    TextView tvText;
+    TextView recommendText;
     TextView userText;
 
-    //初始化4个切换页
     HomeFragment homeFragment;
     MovieFragment movieFragment;
     RecommendFragment recommendFragment;
@@ -53,29 +50,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();//初始化view
-        initEvent();//初始化事件
+        initView();
+        initEvent();
     }
 
     private void initView(){
+
+        Intent intent = getIntent();
+        uid = intent.getStringExtra("uid");;
+
         viewPager = findViewById(R.id.viewpager);
 
-        //初始化4个切换页
         homeFragment = new HomeFragment();
         movieFragment = new MovieFragment();
         recommendFragment = new RecommendFragment();
         userFragment = new UserFragment();
 
-        //把4个切换页添加到容器内
         listFragment.add(homeFragment);
         listFragment.add(movieFragment);
         listFragment.add(recommendFragment);
         listFragment.add(userFragment);
 
-        //导航栏布局栏
         homeLinearLayout = findViewById(R.id.home);
         movieLinearLayout = findViewById(R.id.movie);
-        tvLinearLayout = findViewById(R.id.tv);
+        recommendLinearLayout = findViewById(R.id.tv);
         userLinearLayout = findViewById(R.id.user_center);
 
         //导航栏图标
@@ -87,34 +85,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //导航栏文字
         homeText = findViewById(R.id.home_text);
         movieText = findViewById(R.id.movie_text);
-        tvText = findViewById(R.id.tv_text);
+        recommendText = findViewById(R.id.tv_text);
         userText = findViewById(R.id.user_text);
 
     }
 
     private void initEvent(){
-        FragmentPagerAdapter pageAdapter =new FragmentPagerAdapter(getSupportFragmentManager()) {  //适配器直接new出来
+        FragmentPagerAdapter pageAdapter =new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return listFragment.get(position);//直接返回
+                return listFragment.get(position);
             }
 
             @Override
             public int getCount() {
-                return listFragment.size(); //放回tab数量
+                return listFragment.size();
             }
         };
 
-        //初始化切换
         viewPager.setAdapter(pageAdapter);
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {  //监听界面拖动
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
             @Override
             public void onPageSelected(int position) {
-                int currentItem=viewPager.getCurrentItem(); //获取当前界面
-                tab(currentItem); //切换图标亮度
+                int currentItem=viewPager.getCurrentItem();
+                tab(currentItem);
             }
             @Override
             public void onPageScrollStateChanged(int state) {
@@ -123,11 +120,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         homeLinearLayout.setOnClickListener(this);
         movieLinearLayout.setOnClickListener(this);
-        tvLinearLayout.setOnClickListener(this);
+        recommendLinearLayout.setOnClickListener(this);
         userLinearLayout.setOnClickListener(this);
     }
 
-    private void tab(int i){  //用于屏幕脱拖动时切换底下图标，只在监听屏幕拖动中调用
+    private void tab(int i){
         int color = this.getResources().getColor(R.color.navigate_active);
         resetTab();
         switch (i){
@@ -146,8 +143,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 2:
             {
                 tvImg.setImageResource(R.mipmap.icon_tv_active);
-                tvText.setTextColor(color);
-                recommendFragment.initData();
+                recommendText.setTextColor(color);
+                //recommendFragment.initData();
                 break;
             }
             case 3:
@@ -160,14 +157,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    //自定义一个方法
     private void setSelect(int i){
-        viewPager.setCurrentItem(i);//切换界面
+        viewPager.setCurrentItem(i);
     }
 
-    //导航栏的点击事件
     @Override
-    public void onClick(View view) {  //设置点击的为；亮色
+    public void onClick(View view) {
         resetTab();
         switch (view.getId()){
             case R.id.home:{
@@ -197,7 +192,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    //设置暗色
     private void resetTab() {
         homeImg.setImageResource(R.mipmap.icon_home);
         movieImg.setImageResource(R.mipmap.icon_movie);
@@ -207,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int color = this.getResources().getColor(R.color.navigate);
         homeText.setTextColor(color);
         movieText.setTextColor(color);
-        tvText.setTextColor(color);
+        recommendText.setTextColor(color);
         userText.setTextColor(color);
     }
 

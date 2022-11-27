@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/page_background_color"
+    android:background="@drawable/border_radius"
     android:padding="@dimen/container_padding_size"
     android:orientation="vertical">
     <LinearLayout
@@ -188,10 +188,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:text="@string/user_sign"
+                    android:text="@string/user_role"
                     style="@style/user_title"/>
                 <TextView
-                    android:id="@+id/user_sign"
+                    android:id="@+id/user_role"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <ImageView
@@ -202,30 +202,6 @@
             <include layout="@layout/bottom_border"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_marginTop="@dimen/container_padding_size"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:id="@+id/user_region_layout"
-                android:gravity="center_vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:text="@string/user_region"
-                    style="@style/user_title"/>
-                <TextView
-                    android:id="@+id/user_region"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <ImageView
-                    android:layout_marginLeft="@dimen/container_padding_size"
-                    android:src="@mipmap/icon_arrow"
-                    style="@style/small_img_style"/>
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
 
     <Button

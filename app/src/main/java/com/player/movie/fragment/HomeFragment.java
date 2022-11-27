@@ -65,7 +65,6 @@ public class HomeFragment extends Fragment {
                 banner.setAdapter(new BannerImageAdapter<MovieEntity>(movieEntity) {
                     @Override
                     public void onBindView(BannerImageHolder holder, MovieEntity movieEntity, int position, int size) {
-                        //图片加载自己实现
                         Glide.with(holder.imageView)
                                 .load(Api.HOSTIMG + movieEntity.getLocalImg())
                                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))

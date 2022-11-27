@@ -100,6 +100,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else {
             Toast.makeText(LoginActivity.this, "login successful", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this,MainActivity.class);
+            intent.putExtra("uid", uid);
             startActivity(intent);
         }
 

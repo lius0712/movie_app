@@ -40,7 +40,6 @@ public class CategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.category_fragment,container,false);
         Bundle bundle = getArguments();
-        //这里就拿到了之前传递的参数
         String category = bundle.getString("category");
         String classify = bundle.getString("classify");
         TextView textView = view.findViewById(R.id.category_title).findViewById(R.id.module_title);

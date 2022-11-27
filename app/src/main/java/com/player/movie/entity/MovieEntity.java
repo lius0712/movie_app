@@ -16,7 +16,7 @@ public class MovieEntity {
     private String movieName;//电影名称
     private String isRecommend;//是否推荐，0:不推荐，1:推荐
     private String img;//电影海报
-    private String classify;//分类 电影,电视剧,动漫,综艺,新片库,福利,午夜,恐怖,其他
+    private String classify;
     private String sourceName;//来源名称，本地，骑士影院，爱奇艺
     private String sourceUrl;//来源地址
     private Date createTime;//创建时间
@@ -28,8 +28,8 @@ public class MovieEntity {
     private String useStatus;//0代表未使用，1表示正在使用，是banner和carousel图的才有
     private Double score;//评分
     private String category;//类目，值为banner首屏，carousel：滚动轮播
-    private String ranks;//排名
-    private String userId;//用户名，这这个表不需要，为了跟记录叫和收藏表的结构一致',
+    private String ranks;
+    private String userId;
     private String doubanUrl;
 
     public Long getId() {

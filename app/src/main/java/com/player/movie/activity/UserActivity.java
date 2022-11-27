@@ -50,13 +50,10 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         //sex.setText(State.userEntity.getSex());
         sex.setTag(true);// 必填
 
-        TextView sign = findViewById(R.id.user_sign);
+        TextView sign = findViewById(R.id.user_role);
         //sign.setText(State.userEntity.getSign());
         sign.setTag(false);// 必填
 
-        TextView region = findViewById(R.id.user_region);
-        //region.setText(State.userEntity.getRegion());
-        region.setTag(false);// 必填
     }
 
     private void setOnClickListener(){
@@ -66,7 +63,6 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.user_birthday_layout).setOnClickListener(this);// 出生年月日
         findViewById(R.id.user_sex_layout).setOnClickListener(this);// 性别
         findViewById(R.id.user_sign_layout).setOnClickListener(this);// 签名
-        findViewById(R.id.user_region_layout).setOnClickListener(this);// 地区
         findViewById(R.id.user_logout).setOnClickListener(this);// 退出登录
     }
 
@@ -79,7 +75,6 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.user_birthday_layout:
             case R.id.user_sex_layout:
             case R.id.user_sign_layout:
-            case R.id.user_region_layout:
                 useEdit(v);
                 break;
             case R.id.user_logout:
