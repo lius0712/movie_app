@@ -36,5 +36,6 @@ public interface RequestService {
     @GET(Api.GETRECOMMEND)
     Call<ResultEntity> getRecommend(@Query("classify") String classify);
 
-
+    @GET(Api.GETKEYWORD)
+    Call<ResultEntity> getKeyWord(@Query("classify")String classify);
 }

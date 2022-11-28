@@ -6,15 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.alibaba.fastjson.JSON;
+import com.bumptech.glide.Glide;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.player.movie.R;
 import com.player.movie.activity.LoginActivity;
 import com.player.movie.activity.MainActivity;
+import com.player.movie.activity.UserActivity;
+import com.player.movie.api.Api;
 import com.player.movie.entity.UserEntity;
 import com.player.movie.http.RequestUtils;
 import com.player.movie.http.ResultEntity;
@@ -42,6 +47,8 @@ public class UserFragment extends Fragment{
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Button btn_logout = (Button) getActivity().findViewById(R.id.user_logout);
+
+
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +69,9 @@ public class UserFragment extends Fragment{
             @Override
             public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
                 UserEntity userEntity = response.body();
+
+                RoundedImageView avater = view.findViewById(R.id.user_avater);
+                Glide.with(getContext()).load(Api.HOSTIMG + userEntity.getAvater()).into(avater);
 
                 TextView userName = view.findViewById(R.id.user_m_name);
                 userName.setText(userEntity.getUsername());
@@ -103,4 +113,5 @@ public class UserFragment extends Fragment{
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
 }

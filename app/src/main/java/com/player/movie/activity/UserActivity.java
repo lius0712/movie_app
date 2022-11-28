@@ -27,7 +27,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initUI(){
-        RoundedImageView avater = findViewById(R.id.user_m_avater);
+        RoundedImageView avater = findViewById(R.id.user_avater);
         //Glide.with(this).load(Api.HOST + State.userEntity.getAvater()).into(avater);
 
         TextView userName = findViewById(R.id.user_m_name);

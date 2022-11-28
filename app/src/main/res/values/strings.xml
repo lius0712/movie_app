@@ -2,7 +2,7 @@
     <string name="app_name">movie</string>
     <string name="search_hint"></string>
     <string name="home">home</string>
-    <string name="movie">movie</string>
+    <string name="movie">Movie</string>
     <string name="user">user</string>
     <string name="play_no_score">It is no score</string>
     <string name="detail_plot">plot</string>

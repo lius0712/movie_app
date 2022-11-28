@@ -15,6 +15,7 @@
         <activity android:name=".activity.UserActivity"/>
         <activity android:name=".activity.RegisterActivity"/>
         <activity android:name=".activity.MovieDetailActivity"/>
+        <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

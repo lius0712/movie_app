@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:layout_marginLeft="@dimen/small_margin_size"
+            android:layout_marginLeft="@dimen/mini_margin_size"
             android:paddingLeft="@dimen/small_margin_size"
             android:textColor="@color/background_dark"
             android:gravity="center_vertical"
@@ -37,7 +37,7 @@
         <ImageView
             android:src="@mipmap/icon_search"
             android:scaleType="fitCenter"
-            android:layout_marginRight="@dimen/small_margin_size"
+            android:layout_marginRight="@dimen/mini_margin_size"
             android:layout_width="@dimen/lg_img_size"
             android:layout_height="@dimen/lg_img_size"/>
     </LinearLayout>

@@ -14,32 +14,48 @@
         android:orientation="vertical"
         android:background="@drawable/border_radius">
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
+            android:background="@drawable/border_radius"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/container_padding_size"
             android:layout_height="wrap_content">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="@dimen/big_avater_size"
+                android:layout_height="@dimen/big_avater_size"
+                android:src="@mipmap/icon_avater"
+                android:id="@+id/user_avater"
+                app:riv_oval="true" />
             <LinearLayout
                 android:gravity="center_vertical"
-                android:layout_marginBottom="@dimen/container_padding_size"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:text="@string/user_avater"
-                    style="@style/user_title"/>
-                <com.makeramen.roundedimageview.RoundedImageView
-                    app:riv_oval="false"
-                    app:riv_corner_radius="@dimen/md_avater_size"
-                    android:id="@+id/user_m_avater"
-                    android:layout_width="@dimen/md_avater_size"
-                    android:layout_height="@dimen/md_avater_size"/>
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_marginLeft="@dimen/small_margin_size"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+                    <TextView
+                        style="@style/title_font_style"
+                        android:id="@+id/username"/>
+                    <TextView
+                        android:id="@+id/sign"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
                 <ImageView
-                    android:layout_marginLeft="@dimen/container_padding_size"
-                    android:src="@mipmap/icon_arrow"
-                    style="@style/small_img_style"/>
+                    android:id="@+id/icon_edit"
+                    android:src="@mipmap/icon_edit"
+                    android:layout_width="@dimen/lg_img_size"
+                    android:layout_height="@dimen/lg_img_size"/>
             </LinearLayout>
-            <include layout="@layout/bottom_border"/>
-        </LinearLayout>
 
+        </LinearLayout>
+        <include layout="@layout/bottom_border"/>
         <LinearLayout
             android:layout_marginTop="@dimen/container_padding_size"
             android:orientation="vertical"
