@@ -21,6 +21,8 @@ public interface RequestService {
     @POST(Api.LOGIN)
     Call<UserEntity> login(@Body UserEntity user);
 
+    @POST(Api.LOGIN)
+    Call<UserEntity> changePassword(@Path("uid") String uid, @Path("Password") String Password);
     @GET(Api.GETUSERDATA)
     Call<UserEntity> getUserData(@Path("uid") String uid);
 
@@ -38,4 +40,7 @@ public interface RequestService {
 
     @GET(Api.GETKEYWORD)
     Call<ResultEntity> getKeyWord(@Query("classify")String classify);
+
+    @GET(Api.hotMovie)
+    Call<ResultEntity> getHotMovie(@Query("classify") String classify);
 }
