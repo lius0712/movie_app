@@ -15,6 +15,12 @@
         <activity android:name=".activity.UserActivity"/>
         <activity android:name=".activity.RegisterActivity"/>
         <activity android:name=".activity.MovieDetailActivity"/>
+        <activity android:name=".activity.HotActivity"/>
+        <activity android:name=".activity.PrevueActivity"/>
+        <activity android:name=".activity.LatestActivity"/>
+        <activity android:name=".activity.ClassifyActivity"/>
+        <activity android:name=".activity.ForgotPasswordActivity"/>
+        <activity android:name=".activity.ChangePasswordActivity"/>
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.LoginActivity">
             <intent-filter>

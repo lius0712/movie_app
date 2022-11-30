@@ -21,11 +21,11 @@ import com.player.movie.entity.MovieEntity;
 
 import java.util.List;
 
-public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder> implements View.OnClickListener{
+public class HotRecyclerViewAdapter extends RecyclerView.Adapter<HotRecyclerViewAdapter.ViewHolder> implements View.OnClickListener{
 
     private List<MovieEntity> movieEntityList;
     private Context context;
-    public CategoryRecyclerViewAdapter(List<MovieEntity> movieEntityList,Context context){
+    public HotRecyclerViewAdapter(List<MovieEntity> movieEntityList, Context context){
         this.movieEntityList = movieEntityList;
         this.context = context;
     }
@@ -41,22 +41,22 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
 
     @NonNull
     @Override
-    public CategoryRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_item, parent, false);
+    public HotRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.hot_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryRecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HotRecyclerViewAdapter.ViewHolder holder, int position) {
         String path = Api.HOSTIMG + movieEntityList.get(position).getLocalImg();
         Glide.with(context).load(path).into(holder.imageView);
         holder.textView.setText(movieEntityList.get(position).getMovieName());
         holder.itemView.setTag(movieEntityList.get(position));
-        if(position == movieEntityList.size() - 1){
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(0,0,0,0);
-            holder.itemView.setLayoutParams(layoutParams);
-        }
+//        if(position == movieEntityList.size() - 1){
+//            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//            layoutParams.setMargins(0,0,0,0);
+//            holder.itemView.setLayoutParams(layoutParams);
+//        }
         holder.itemView.setOnClickListener(this);
     }
 
@@ -70,8 +70,8 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         public final TextView textView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.movie_img);
-            textView = itemView.findViewById(R.id.movie_name);
+            imageView = itemView.findViewById(R.id.hot_img);
+            textView = itemView.findViewById(R.id.hot_name);
         }
     }
 

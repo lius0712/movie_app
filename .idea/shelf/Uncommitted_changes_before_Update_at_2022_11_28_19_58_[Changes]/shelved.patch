@@ -1,0 +1,471 @@
+Index: app/src/main/java/com/player/movie/api/Api.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.player.movie.api;\r\n\r\npublic class Api {\r\n    //public static final String HOST = \"http://10.28.253.144:8090/\";\r\n    public static final String HOST = \"http:// /\";\r\n    public static final String HOSTIMG = \"http:// /\";\r\n    //查询所有大分类\r\n    public static final String GETUSERDATA = \"users/{uid}\";\r\n    public static final String GETCATEGORYLIST = \"movies/getCategoryList\";// 获取分类影片\r\n    public static final String GETKEYWORD = \"movies/getKeyWord\";//按照classify查询搜索栏的关键词\r\n    public static final String GETALLCATEGORYBYCLASSIFY =  \"movies/getAllCategoryByClassify\";//按classify大类查询所有catory小类\r\n    public static final String GETALLCATEGORYLISTBYPAGENAME =  \"movieCategory/getAllCategoryListByPageName\"; //按页面获取要展示的category小类\r\n    public static final String GETUSERMSG =  \"/service/movie-getway/getUserMsg\"; //获取用户四个指标信息，使用天数，关注，观看记录，浏览记录\r\n    public static final String GETSEARCHRESULT =  \"movies/search\"; //搜索\r\n    public static final String LOGIN =  \"users/login\"; //login\r\n    public static final String REGISTER =  \"users/\"; //register\r\n    public static final String GETSTAR =  \"movieStars/getStar\"; //获取演员\r\n    public static final String GETMOVIEURL =  \"/service/movie/getMovieUrl\"; //获取电影播放地址\r\n    public static final String GETVIEWRECORD =  \"/service/movie-getway/getViewRecord\"; //获取浏览记录\r\n    public static final String SAVEVIEWRECORD =  \"/service/movie-getway/saveViewRecord\";  //浏览历史\r\n    public static final String GETPLAYRECORD =  \"/service/movie-getway/getPlayRecord\";  //获取观看记录\r\n    public static final String SAVEPLAYRECORD =  \"/service/movie-getway/savePlayRecord\";   //播放记录\r\n    public static final String GETFAVORITE =  \"/service/movie-getway/getFavorite\"; //获取收藏电影\r\n    public static final String SAVEFAVORITE = \"/service/movie-getway/saveFavorite\"; //添加收藏\r\n    public static final String DELETEFAVORITE = \"/service/movie-getway/deleteFavorite\"; //删除收藏\r\n    public static final String GETYOURLIKES = \"/service/movie/getYourLikes\";//猜你想看\r\n    public static final String GETRECOMMEND = \"movies/getRecommend\";//获取推荐\r\n    public static final String ISFAVORITE = \"/service/movie-getway/isFavorite\";//查询是否已经收藏\r\n    public static final String UPDATEUSER = \"/service/movie-getway/updateUser\";//更新用户信息\r\n    public static final String UPDATEPASSWORD = \"/service/movie-getway/updatePassword\";//更新密码\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/player/movie/api/Api.java b/app/src/main/java/com/player/movie/api/Api.java
+--- a/app/src/main/java/com/player/movie/api/Api.java	(revision eb8008977e96acbe9047e2f4cc86203353e0e460)
++++ b/app/src/main/java/com/player/movie/api/Api.java	(date 1669636671547)
+@@ -2,10 +2,10 @@
+ 
+ public class Api {
+     //public static final String HOST = "http://10.28.253.144:8090/";
+-    public static final String HOST = "http:// /";
++    public static final String HOST = "http:// :8090/";
+     public static final String HOSTIMG = "http:// /";
+     //查询所有大分类
+-    public static final String GETUSERDATA = "users/{uid}";
++    public static final String GETUSERDATA = "service/movie/getUserData";
+     public static final String GETCATEGORYLIST = "movies/getCategoryList";// 获取分类影片
+     public static final String GETKEYWORD = "movies/getKeyWord";//按照classify查询搜索栏的关键词
+     public static final String GETALLCATEGORYBYCLASSIFY =  "movies/getAllCategoryByClassify";//按classify大类查询所有catory小类
+@@ -14,7 +14,7 @@
+     public static final String GETSEARCHRESULT =  "movies/search"; //搜索
+     public static final String LOGIN =  "users/login"; //login
+     public static final String REGISTER =  "users/"; //register
+-    public static final String GETSTAR =  "movieStars/getStar"; //获取演员
++    public static final String GETSTAR =  "/service/movie/getStar/"; //获取演员
+     public static final String GETMOVIEURL =  "/service/movie/getMovieUrl"; //获取电影播放地址
+     public static final String GETVIEWRECORD =  "/service/movie-getway/getViewRecord"; //获取浏览记录
+     public static final String SAVEVIEWRECORD =  "/service/movie-getway/saveViewRecord";  //浏览历史
+@@ -24,9 +24,12 @@
+     public static final String SAVEFAVORITE = "/service/movie-getway/saveFavorite"; //添加收藏
+     public static final String DELETEFAVORITE = "/service/movie-getway/deleteFavorite"; //删除收藏
+     public static final String GETYOURLIKES = "/service/movie/getYourLikes";//猜你想看
+-    public static final String GETRECOMMEND = "movies/getRecommend";//获取推荐
++    public static final String GETRECOMMEND = "/service/movie/getRecommend";//获取推荐
+     public static final String ISFAVORITE = "/service/movie-getway/isFavorite";//查询是否已经收藏
+     public static final String UPDATEUSER = "/service/movie-getway/updateUser";//更新用户信息
+     public static final String UPDATEPASSWORD = "/service/movie-getway/updatePassword";//更新密码
+-
++    public static final String GETCOMMENTCOUNT = "/service/movie/getCommentCount";//获取评论总数
++    public static final String GETTOPCOMMENTLIST = "/service/movie/getTopCommentList";//获取一级评论
++    public static final String GETREPLYCOMMENTLIST = "/service/movie/getReplyCommentList";//获取一级评论
++    public static final String INSERTCOMMENTSERVICE = "/service/movie-getway/insertComment";//新增评论
+ }
+Index: app/src/main/java/com/player/movie/fragment/HomeFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.player.movie.fragment;\r\n\r\nimport android.content.SharedPreferences;\r\nimport android.os.Bundle;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\nimport androidx.annotation.Nullable;\r\nimport androidx.fragment.app.Fragment;\r\nimport androidx.fragment.app.FragmentManager;\r\nimport androidx.fragment.app.FragmentTransaction;\r\n\r\nimport com.alibaba.fastjson.JSON;\r\nimport com.bumptech.glide.Glide;\r\nimport com.bumptech.glide.load.resource.bitmap.RoundedCorners;\r\nimport com.bumptech.glide.request.RequestOptions;\r\nimport com.google.gson.Gson;\r\nimport com.makeramen.roundedimageview.RoundedImageView;\r\nimport com.player.movie.R;\r\nimport com.player.movie.api.Api;\r\nimport com.player.movie.entity.CategoryEntity;\r\nimport com.player.movie.entity.MovieEntity;\r\nimport com.player.movie.entity.UserEntity;\r\nimport com.player.movie.http.RequestUtils;\r\nimport com.player.movie.http.ResultEntity;\r\nimport com.player.movie.utils.SharedPreferencesUtils;\r\nimport com.youth.banner.Banner;\r\nimport com.youth.banner.adapter.BannerImageAdapter;\r\nimport com.youth.banner.holder.BannerImageHolder;\r\nimport com.youth.banner.indicator.CircleIndicator;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\nimport retrofit2.Call;\r\nimport retrofit2.Callback;\r\nimport retrofit2.Response;\r\n\r\npublic class HomeFragment extends Fragment {\r\n    private View view;\r\n    @Nullable\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\r\n        view = inflater.inflate(R.layout.home_fragment,container,false);\r\n        addSearchFraction();\r\n        getBannerData();\r\n        getAllCategoryListByPageName();\r\n        return view;\r\n    }\r\n\r\n    private void addSearchFraction(){\r\n        FragmentTransaction transaction =  getFragmentManager().beginTransaction();\r\n        transaction.replace(R.id.home_search_layout,new SearchFragment(getResources().getString(R.string.movie)))\r\n                .commit();\r\n    }\r\n\r\n    public void getBannerData(){\r\n        Call<ResultEntity> categoryListService = RequestUtils.getInstance().getCategoryList(\"carousel\",\"Movie\");\r\n        categoryListService.enqueue(new Callback<ResultEntity>() {\r\n            @Override\r\n            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {\r\n                List<MovieEntity> movieEntity = JSON.parseArray(JSON.toJSONString(response.body().getData()),MovieEntity.class);\r\n                Banner banner = view.findViewById(R.id.home_banner);\r\n                banner.setAdapter(new BannerImageAdapter<MovieEntity>(movieEntity) {\r\n                    @Override\r\n                    public void onBindView(BannerImageHolder holder, MovieEntity movieEntity, int position, int size) {\r\n                        Glide.with(holder.imageView)\r\n                                .load(Api.HOSTIMG + movieEntity.getLocalImg())\r\n                                .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))\r\n                                .into(holder.imageView);\r\n                    }\r\n                }).setIndicator(new CircleIndicator(getContext())).setBannerRound(20.0f);\r\n            }\r\n\r\n            @Override\r\n            public void onFailure(Call<ResultEntity> call, Throwable t) {\r\n                System.out.println(\"error\");\r\n            }\r\n        });\r\n    }\r\n\r\n    public void getAllCategoryListByPageName(){\r\n        Call<ResultEntity> categoryListService = RequestUtils.getInstance().getAllCategoryListByPageName(\"home\");\r\n        categoryListService.enqueue(new Callback<ResultEntity>() {\r\n            @Override\r\n            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {\r\n                List<CategoryEntity> categoryEntities = JSON.parseArray(JSON.toJSONString(response.body().getData()), CategoryEntity.class);\r\n                FragmentManager fragmentManager = getFragmentManager();\r\n                FragmentTransaction transaction = fragmentManager.beginTransaction();\r\n                for(CategoryEntity category:categoryEntities){\r\n                    CategoryFragment categoryFragment = new CategoryFragment();\r\n                    Bundle bundle = new Bundle();\r\n                    bundle.putString(\"category\", category.getCategory());\r\n                    bundle.putString(\"classify\", category.getClassify());\r\n                    categoryFragment.setArguments(bundle);\r\n                    transaction.add(R.id.home_category_layout, categoryFragment);\r\n                }\r\n                transaction.commit();\r\n            }\r\n\r\n            @Override\r\n            public void onFailure(Call<ResultEntity> call, Throwable t) {\r\n                System.out.println(\"error\");\r\n            }\r\n        });\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/player/movie/fragment/HomeFragment.java b/app/src/main/java/com/player/movie/fragment/HomeFragment.java
+--- a/app/src/main/java/com/player/movie/fragment/HomeFragment.java	(revision eb8008977e96acbe9047e2f4cc86203353e0e460)
++++ b/app/src/main/java/com/player/movie/fragment/HomeFragment.java	(date 1669636671579)
+@@ -1,10 +1,13 @@
+ package com.player.movie.fragment;
+ 
++import android.content.Intent;
+ import android.content.SharedPreferences;
+ import android.os.Bundle;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
++import android.widget.Button;
++import android.widget.ImageView;
+ 
+ import androidx.annotation.Nullable;
+ import androidx.fragment.app.Fragment;
+@@ -18,6 +21,8 @@
+ import com.google.gson.Gson;
+ import com.makeramen.roundedimageview.RoundedImageView;
+ import com.player.movie.R;
++import com.player.movie.activity.HotActivity;
++import com.player.movie.activity.MainActivity;
+ import com.player.movie.api.Api;
+ import com.player.movie.entity.CategoryEntity;
+ import com.player.movie.entity.MovieEntity;
+@@ -37,7 +42,7 @@
+ import retrofit2.Callback;
+ import retrofit2.Response;
+ 
+-public class HomeFragment extends Fragment {
++public class HomeFragment extends Fragment implements View.OnClickListener {
+     private View view;
+     @Nullable
+     @Override
+@@ -46,8 +51,18 @@
+         addSearchFraction();
+         getBannerData();
+         getAllCategoryListByPageName();
++        ImageView hot = view.findViewById(R.id.hot);
++        hot.setOnClickListener(this);
+         return view;
+     }
++    public void onClick(View v){
++        switch ((v.getId())){
++            case R.id.hot:
++                Intent intent = new Intent(getActivity(), HotActivity.class);
++                startActivity(intent);
++                break;
++        }
++    }
+ 
+     private void addSearchFraction(){
+         FragmentTransaction transaction =  getFragmentManager().beginTransaction();
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"JDK\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision eb8008977e96acbe9047e2f4cc86203353e0e460)
++++ b/.idea/misc.xml	(date 1669636671609)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\n\r\nbuildscript {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n        \r\n    }\r\n    dependencies {\r\n        classpath 'com.android.tools.build:gradle:3.5.2'\r\n        \r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n        \r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle b/build.gradle
+--- a/build.gradle	(revision eb8008977e96acbe9047e2f4cc86203353e0e460)
++++ b/build.gradle	(date 1669636671672)
+@@ -7,7 +7,7 @@
+         
+     }
+     dependencies {
+-        classpath 'com.android.tools.build:gradle:3.5.2'
++        classpath 'com.android.tools.build:gradle:4.2.2'
+         
+         // NOTE: Do not place your application dependencies here; they belong
+         // in the individual module build.gradle files
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Wed Nov 17 21:45:49 CST 2021\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-5.4.1-all.zip\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+--- a/gradle/wrapper/gradle-wrapper.properties	(revision eb8008977e96acbe9047e2f4cc86203353e0e460)
++++ b/gradle/wrapper/gradle-wrapper.properties	(date 1669636671703)
+@@ -3,4 +3,4 @@
+ distributionPath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-6.7.1-all.zip
+Index: app/src/main/res/layout/home_fragment.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    style=\"@style/fragment_layout\">\r\n    <LinearLayout\r\n        android:orientation=\"horizontal\"\r\n        android:id=\"@+id/home_search_layout\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"/>\r\n    <ScrollView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"0dp\"\r\n        android:layout_weight=\"1\"\r\n        android:fillViewport=\"true\"\r\n        android:scrollbars=\"none\">\r\n        <LinearLayout\r\n            android:orientation=\"vertical\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\">\r\n            <com.youth.banner.Banner\r\n                android:layout_marginTop=\"@dimen/container_padding_size\"\r\n                android:id=\"@+id/home_banner\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"@dimen/banner_height_size\" />\r\n            <LinearLayout\r\n                android:background=\"@drawable/border_radius\"\r\n                android:orientation=\"horizontal\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_marginTop=\"@dimen/container_padding_size\"\r\n                android:padding=\"@dimen/container_padding_size\"\r\n                android:layout_height=\"wrap_content\">\r\n                <LinearLayout\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:orientation=\"vertical\"\r\n                    android:gravity=\"center_horizontal\"\r\n                    android:paddingLeft=\"-10dp\"\r\n                    android:layout_weight=\"1\">\r\n                    <ImageView\r\n                        android:layout_width=\"@dimen/home_big_icon_size\"\r\n                        android:layout_height=\"@dimen/home_big_icon_size\"\r\n                        android:src=\"@mipmap/hot\"\r\n                        />\r\n                    <TextView\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginTop=\"10dp\"\r\n                        android:text=\"@string/home_hot\"/>\r\n                </LinearLayout>\r\n                <LinearLayout\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:orientation=\"vertical\"\r\n                    android:gravity=\"center_horizontal\"\r\n                    android:layout_marginLeft=\"12dp\"\r\n                    android:layout_weight=\"1\">\r\n                    <ImageView\r\n                        android:layout_width=\"@dimen/home_big_icon_size\"\r\n                        android:layout_height=\"@dimen/home_big_icon_size\"\r\n                        android:src=\"@mipmap/icon_play\"\r\n                        />\r\n                    <TextView\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginTop=\"@dimen/small_margin_size\"\r\n                        android:text=\"@string/home_play\"/>\r\n                </LinearLayout>\r\n                <LinearLayout\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:orientation=\"vertical\"\r\n                    android:layout_marginLeft=\"12dp\"\r\n                    android:gravity=\"center_horizontal\"\r\n                    android:layout_weight=\"1\">\r\n                    <ImageView\r\n                        android:layout_width=\"@dimen/home_big_icon_size\"\r\n                        android:layout_height=\"@dimen/home_big_icon_size\"\r\n                        android:src=\"@mipmap/latest\"\r\n                        />\r\n                    <TextView\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginTop=\"@dimen/small_margin_size\"\r\n                        android:text=\"@string/home_new\"/>\r\n                </LinearLayout>\r\n                <LinearLayout\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:gravity=\"center_horizontal\"\r\n                    android:orientation=\"vertical\"\r\n                    android:layout_marginLeft=\"12dp\"\r\n                    android:layout_weight=\"1\">\r\n                    <ImageView\r\n                        android:layout_width=\"@dimen/home_big_icon_size\"\r\n                        android:layout_height=\"@dimen/home_big_icon_size\"\r\n                        android:src=\"@mipmap/classify\"\r\n                        />\r\n                    <TextView\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginTop=\"@dimen/small_margin_size\"\r\n                        android:text=\"@string/home_classify\"/>\r\n                </LinearLayout>\r\n            </LinearLayout>\r\n            <LinearLayout\r\n                android:orientation=\"vertical\"\r\n                android:id=\"@+id/home_category_layout\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\">\r\n            </LinearLayout>\r\n        </LinearLayout>\r\n    </ScrollView>\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/home_fragment.xml b/app/src/main/res/layout/home_fragment.xml
+--- a/app/src/main/res/layout/home_fragment.xml	(revision eb8008977e96acbe9047e2f4cc86203353e0e460)
++++ b/app/src/main/res/layout/home_fragment.xml	(date 1669636671719)
+@@ -36,6 +36,7 @@
+                     android:paddingLeft="-10dp"
+                     android:layout_weight="1">
+                     <ImageView
++                        android:id="@+id/hot"
+                         android:layout_width="@dimen/home_big_icon_size"
+                         android:layout_height="@dimen/home_big_icon_size"
+                         android:src="@mipmap/hot"
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"GRADLE\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision eb8008977e96acbe9047e2f4cc86203353e0e460)
++++ b/.idea/gradle.xml	(date 1669636671734)
+@@ -7,6 +7,7 @@
+         <option name="testRunner" value="GRADLE" />
+         <option name="distributionType" value="DEFAULT_WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="gradleJvm" value="Embedded JDK" />
+         <option name="modules">
+           <set>
+             <option value="$PROJECT_DIR$" />
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.player.movie\">\r\n\r\n    <application\r\n        android:name=\".BaseApplication\"\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:usesCleartextTraffic=\"true\"\r\n        android:theme=\"@style/Theme.AppCompat.Light.NoActionBar\">\r\n        <activity android:name=\".activity.MainActivity\"/>\r\n        <activity android:name=\".activity.UserActivity\"/>\r\n        <activity android:name=\".activity.RegisterActivity\"/>\r\n        <activity android:name=\".activity.MovieDetailActivity\"/>\r\n        <activity android:name=\".activity.LoginActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision eb8008977e96acbe9047e2f4cc86203353e0e460)
++++ b/app/src/main/AndroidManifest.xml	(date 1669636671750)
+@@ -15,6 +15,7 @@
+         <activity android:name=".activity.UserActivity"/>
+         <activity android:name=".activity.RegisterActivity"/>
+         <activity android:name=".activity.MovieDetailActivity"/>
++        <activity android:name=".activity.HotActivity"/>
+         <activity android:name=".activity.LoginActivity">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+Index: app/src/main/java/com/player/movie/activity/MovieDetailActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.player.movie.activity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.ImageView;\r\nimport android.widget.LinearLayout;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.Nullable;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport com.alibaba.fastjson.JSON;\r\nimport com.bumptech.glide.Glide;\r\nimport com.bumptech.glide.load.resource.bitmap.RoundedCorners;\r\nimport com.bumptech.glide.request.RequestOptions;\r\nimport com.makeramen.roundedimageview.RoundedImageView;\r\nimport com.player.movie.R;\r\nimport com.player.movie.adapter.StarRecyclerViewAdapter;\r\nimport com.player.movie.api.Api;\r\nimport com.player.movie.entity.MovieEntity;\r\nimport com.player.movie.entity.MovieStarEntity;\r\nimport com.player.movie.http.RequestUtils;\r\nimport com.player.movie.http.ResultEntity;\r\n\r\nimport java.util.List;\r\n\r\nimport retrofit2.Call;\r\nimport retrofit2.Callback;\r\nimport retrofit2.Response;\r\n\r\npublic class MovieDetailActivity extends AppCompatActivity {\r\n\r\n    MovieEntity movieEntity;\r\n    String movieItemString;\r\n\r\n    @Override\r\n    protected void onCreate(@Nullable Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_movie_detail);\r\n        initData();\r\n        setModuleTitle();\r\n        getStarList();\r\n    }\r\n\r\n\r\n    private void initData(){\r\n        Intent intent = getIntent();\r\n        movieItemString = intent.getStringExtra(\"movieItem\");\r\n\r\n        movieEntity = JSON.parseObject(movieItemString, MovieEntity.class);\r\n\r\n        RoundedImageView imageView = findViewById(R.id.detail_movie_img);\r\n\r\n        Glide.with(imageView)\r\n                .load(Api.HOSTIMG + movieEntity.getLocalImg())\r\n                .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))\r\n                .into(imageView);\r\n\r\n        TextView movieName = findViewById(R.id.detail_movie_name);\r\n        movieName.setText(movieEntity.getMovieName());\r\n\r\n        TextView movieStar = findViewById(R.id.detail_movie_star);\r\n\r\n//        System.out.println(\"************\");\r\n//        System.out.println(movieEntity.getStar());\r\n\r\n        if(movieEntity.getStar() != null){\r\n            movieStar.setText(\"Star：\" + movieEntity.getStar());\r\n        }else{\r\n            movieStar.setText(\"Star：nothing\");\r\n        }\r\n\r\n        TextView descriptionText = findViewById(R.id.detail_description);\r\n        if(movieEntity.getDescription() != null){\r\n            descriptionText.setText(movieEntity.getDescription().trim());\r\n        }else{\r\n            descriptionText.setVisibility(View.GONE);\r\n        }\r\n\r\n        LinearLayout scoreLayout = findViewById(R.id.detail_score_layout);\r\n        Double score = movieEntity.getScore();\r\n        if(score != null && score != 0){\r\n            for(int i = 0; i < 5; i++){\r\n                ImageView scoreImageView = (ImageView) scoreLayout.getChildAt(i);\r\n                if(score >= (i+1)*2){\r\n                    scoreImageView.setImageResource(R.mipmap.icon_full_star);\r\n                }else if(score < (i+1)*2 && score >= i*2 + 1){\r\n                    scoreImageView.setImageResource(R.mipmap.icon_half_star);\r\n                }\r\n            }\r\n            TextView scoreText = findViewById(R.id.detail_score);\r\n            scoreText.setText(String.valueOf(score));\r\n        }else{\r\n            findViewById(R.id.detail_no_score).setVisibility(View.VISIBLE);\r\n            scoreLayout.setVisibility(View.GONE);\r\n        }\r\n\r\n        TextView plotText = findViewById(R.id.detail_plot);\r\n        if(movieEntity.getPlot() != null){\r\n            plotText.setText(\"\\u3000\\u3000\" + movieEntity.getPlot());\r\n        }else{\r\n            plotText.setText(\"\\u3000\\u3000nothing\");\r\n        }\r\n\r\n        if(movieEntity.getMovieId() == null){\r\n            findViewById(R.id.detail_movie_play).setVisibility(View.GONE);\r\n        }\r\n    }\r\n\r\n    private void setModuleTitle(){\r\n        TextView plotTitle = findViewById(R.id.detail_plot_title).findViewById(R.id.module_title);\r\n        plotTitle.setText(R.string.detail_plot);\r\n\r\n        TextView starText = findViewById(R.id.detail_star_title).findViewById(R.id.module_title);\r\n        starText.setText(R.string.detail_star);\r\n    }\r\n\r\n    private void getStarList(){\r\n        if(movieEntity.getMovieId() == null){\r\n            findViewById(R.id.detail_star_layout).setVisibility(View.GONE);\r\n            return;\r\n        }\r\n        Call<ResultEntity> call = RequestUtils.getInstance().getStarList(movieEntity.getMovieId().toString());\r\n        call.enqueue(new Callback<ResultEntity>() {\r\n            @Override\r\n            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {\r\n                List<MovieStarEntity> movieStarList = JSON.parseArray(JSON.toJSONString(response.body().getData()), MovieStarEntity.class);\r\n                StarRecyclerViewAdapter starRecyclerViewAdapter = new StarRecyclerViewAdapter(movieStarList,MovieDetailActivity.this);\r\n                LinearLayoutManager layoutManager=new LinearLayoutManager(MovieDetailActivity.this);  //LinearLayoutManager中定制了可扩展的布局排列接口，子类按照接口中的规范来实现就可以定制出不同排雷方式的布局了\r\n                layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);\r\n                RecyclerView recyclerView = findViewById(R.id.detail_star_recycler_view);\r\n                recyclerView.setLayoutManager(layoutManager);\r\n                recyclerView.setAdapter(starRecyclerViewAdapter);\r\n            }\r\n\r\n            @Override\r\n            public void onFailure(Call<ResultEntity> call, Throwable t) {\r\n                System.out.println(\"error\");\r\n            }\r\n        });\r\n    }\r\n\r\n\r\n\r\n    public void goPlay(View v){\r\n//        if(movieEntity.getMovieId() != null){\r\n//            Intent intent = new Intent(this, MoviePlayActivity.class);\r\n//            intent.putExtra(\"movieItem\",movieItemString);\r\n//            startActivity(intent);\r\n//        }else{\r\n//            Toast.makeText(getApplicationContext(), R.string.detail_no_play, Toast.LENGTH_SHORT).show();\r\n//        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/player/movie/activity/MovieDetailActivity.java b/app/src/main/java/com/player/movie/activity/MovieDetailActivity.java
+--- a/app/src/main/java/com/player/movie/activity/MovieDetailActivity.java	(revision eb8008977e96acbe9047e2f4cc86203353e0e460)
++++ b/app/src/main/java/com/player/movie/activity/MovieDetailActivity.java	(date 1669636672125)
+@@ -10,8 +10,6 @@
+ 
+ import androidx.annotation.Nullable;
+ import androidx.appcompat.app.AppCompatActivity;
+-import androidx.recyclerview.widget.LinearLayoutManager;
+-import androidx.recyclerview.widget.RecyclerView;
+ 
+ import com.alibaba.fastjson.JSON;
+ import com.bumptech.glide.Glide;
+@@ -19,18 +17,8 @@
+ import com.bumptech.glide.request.RequestOptions;
+ import com.makeramen.roundedimageview.RoundedImageView;
+ import com.player.movie.R;
+-import com.player.movie.adapter.StarRecyclerViewAdapter;
+ import com.player.movie.api.Api;
+ import com.player.movie.entity.MovieEntity;
+-import com.player.movie.entity.MovieStarEntity;
+-import com.player.movie.http.RequestUtils;
+-import com.player.movie.http.ResultEntity;
+-
+-import java.util.List;
+-
+-import retrofit2.Call;
+-import retrofit2.Callback;
+-import retrofit2.Response;
+ 
+ public class MovieDetailActivity extends AppCompatActivity {
+ 
+@@ -42,8 +30,6 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_movie_detail);
+         initData();
+-        setModuleTitle();
+-        getStarList();
+     }
+ 
+ 
+@@ -65,8 +51,8 @@
+ 
+         TextView movieStar = findViewById(R.id.detail_movie_star);
+ 
+-//        System.out.println("************");
+-//        System.out.println(movieEntity.getStar());
++        System.out.println("************");
++        System.out.println(movieEntity.getStar());
+ 
+         if(movieEntity.getStar() != null){
+             movieStar.setText("Star：" + movieEntity.getStar());
+@@ -111,41 +97,6 @@
+         }
+     }
+ 
+-    private void setModuleTitle(){
+-        TextView plotTitle = findViewById(R.id.detail_plot_title).findViewById(R.id.module_title);
+-        plotTitle.setText(R.string.detail_plot);
+-
+-        TextView starText = findViewById(R.id.detail_star_title).findViewById(R.id.module_title);
+-        starText.setText(R.string.detail_star);
+-    }
+-
+-    private void getStarList(){
+-        if(movieEntity.getMovieId() == null){
+-            findViewById(R.id.detail_star_layout).setVisibility(View.GONE);
+-            return;
+-        }
+-        Call<ResultEntity> call = RequestUtils.getInstance().getStarList(movieEntity.getMovieId().toString());
+-        call.enqueue(new Callback<ResultEntity>() {
+-            @Override
+-            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
+-                List<MovieStarEntity> movieStarList = JSON.parseArray(JSON.toJSONString(response.body().getData()), MovieStarEntity.class);
+-                StarRecyclerViewAdapter starRecyclerViewAdapter = new StarRecyclerViewAdapter(movieStarList,MovieDetailActivity.this);
+-                LinearLayoutManager layoutManager=new LinearLayoutManager(MovieDetailActivity.this);  //LinearLayoutManager中定制了可扩展的布局排列接口，子类按照接口中的规范来实现就可以定制出不同排雷方式的布局了
+-                layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+-                RecyclerView recyclerView = findViewById(R.id.detail_star_recycler_view);
+-                recyclerView.setLayoutManager(layoutManager);
+-                recyclerView.setAdapter(starRecyclerViewAdapter);
+-            }
+-
+-            @Override
+-            public void onFailure(Call<ResultEntity> call, Throwable t) {
+-                System.out.println("error");
+-            }
+-        });
+-    }
+-
+-
+-
+     public void goPlay(View v){
+ //        if(movieEntity.getMovieId() != null){
+ //            Intent intent = new Intent(this, MoviePlayActivity.class);
+Index: app/src/main/java/com/player/movie/activity/HotActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/player/movie/activity/HotActivity.java b/app/src/main/java/com/player/movie/activity/HotActivity.java
+new file mode 100644
+--- /dev/null	(date 1669636683455)
++++ b/app/src/main/java/com/player/movie/activity/HotActivity.java	(date 1669636683455)
+@@ -0,0 +1,20 @@
++package com.player.movie.activity;
++
++import android.content.Intent;
++import android.os.Bundle;
++import android.view.View;
++import android.widget.Button;
++import android.widget.ImageView;
++import androidx.annotation.Nullable;
++import androidx.appcompat.app.AppCompatActivity;
++import com.player.movie.R;
++import java.io.IOException;
++import java.util.concurrent.ExecutionException;
++
++public class HotActivity extends AppCompatActivity {
++    @Override
++    protected void onCreate(@Nullable Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.category_fragment);
++    }
++}
+Index: app/src/main/res/layout/activity_login.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#f0f0f0\"\r\n    android:orientation=\"vertical\" >\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_marginTop=\"100dp\"\r\n        android:layout_height=\"80px\">\r\n        <TextView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:clickable=\"false\"\r\n            android:textSize=\"60px\"\r\n            android:gravity=\"center\"\r\n            android:text=\"@string/logo\" />\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_gravity=\"center\"\r\n        android:layout_height=\"55dp\"\r\n        android:layout_marginTop=\"60dp\"\r\n        android:background=\"#fff\"\r\n        android:orientation=\"horizontal\" >\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"center_vertical\"\r\n            android:layout_marginLeft=\"10dp\"\r\n            android:text=\"@string/username\"\r\n            android:textColor=\"#838383\"\r\n            android:textSize=\"17sp\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/Name\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"center_vertical\"\r\n            android:layout_marginLeft=\"10dp\"\r\n            android:layout_weight=\"1\"\r\n            android:background=\"@android:color/transparent\"\r\n            android:hint=\"@string/inputusername\"\r\n            android:maxLength=\"11\"\r\n            android:inputType=\"text\"\r\n            android:textSize=\"17sp\" />\r\n    </LinearLayout>\r\n\r\n    <View\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"1px\"\r\n        android:background=\"#f0f0f0\" />\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"55dp\"\r\n        android:background=\"#fff\"\r\n        android:orientation=\"horizontal\" >\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"center_vertical\"\r\n            android:layout_marginLeft=\"10dp\"\r\n            android:text=\"@string/password\"\r\n            android:textColor=\"#838383\"\r\n            android:textSize=\"17sp\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/Password\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"center_vertical\"\r\n            android:layout_marginLeft=\"10dp\"\r\n            android:layout_weight=\"1\"\r\n            android:maxLength=\"16\"\r\n            android:background=\"@android:color/transparent\"\r\n            android:hint=\"@string/inputpassword\"\r\n            android:inputType=\"textPassword\"\r\n            android:textSize=\"17sp\" />\r\n    </LinearLayout>\r\n\r\n    <Button\r\n        android:id=\"@+id/signIn\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"@dimen/md_btn_height\"\r\n        android:layout_marginLeft=\"10dp\"\r\n        android:layout_marginRight=\"10dp\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:text=\"@string/user_signin\"\r\n        android:background=\"@drawable/btn_radius_red_decoration\"\r\n        android:textSize=\"17sp\" />\r\n\r\n    <RelativeLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"20dp\" >\r\n\r\n        <TextView\r\n            android:id=\"@+id/register\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_alignParentLeft=\"true\"\r\n            android:layout_marginLeft=\"30dp\"\r\n            android:text=\"@string/getpasswordback\"\r\n            android:textColor=\"#838383\"\r\n            android:textSize=\"15sp\" />\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_alignParentRight=\"true\"\r\n            android:layout_marginRight=\"30dp\"\r\n            android:text=\"@string/phonefastlogin\"\r\n            android:textColor=\"#838383\"\r\n            android:textSize=\"15sp\" />\r\n    </RelativeLayout>\r\n\r\n    <RelativeLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_weight=\"1\" >\r\n\r\n        <LinearLayout\r\n            android:id=\"@+id/id_fast_login\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_centerInParent=\"true\"\r\n            android:layout_marginBottom=\"50dp\"\r\n            android:orientation=\"horizontal\" >\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_weight=\"1\"\r\n                android:clickable=\"true\"\r\n                android:gravity=\"center\"\r\n                android:text=\"@string/Facebook\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_weight=\"1\"\r\n                android:clickable=\"true\"\r\n                android:gravity=\"center\"\r\n                android:text=\"@string/Google\" />\r\n\r\n        </LinearLayout>\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_above=\"@id/id_fast_login\"\r\n            android:layout_centerHorizontal=\"true\"\r\n            android:layout_marginBottom=\"20dp\"\r\n            android:layout_marginTop=\"20dp\"\r\n            android:text=\"@string/fastlogin\" />\r\n    </RelativeLayout>\r\n\r\n</LinearLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_login.xml b/app/src/main/res/layout/activity_login.xml
+--- a/app/src/main/res/layout/activity_login.xml	(revision eb8008977e96acbe9047e2f4cc86203353e0e460)
++++ b/app/src/main/res/layout/activity_login.xml	(date 1669636683468)
+@@ -3,28 +3,29 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:background="#f0f0f0"
+-    android:orientation="vertical" >
++    android:orientation="vertical">
+ 
+     <LinearLayout
+         android:layout_width="match_parent"
+-        android:layout_marginTop="100dp"
+-        android:layout_height="80px">
++        android:layout_height="80px"
++        android:layout_marginTop="100dp">
++
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:clickable="false"
+-            android:textSize="60px"
+             android:gravity="center"
+-            android:text="@string/logo" />
++            android:text="@string/logo"
++            android:textSize="60px" />
+     </LinearLayout>
+ 
+     <LinearLayout
+         android:layout_width="match_parent"
+-        android:layout_gravity="center"
+         android:layout_height="55dp"
++        android:layout_gravity="center"
+         android:layout_marginTop="60dp"
+         android:background="#fff"
+-        android:orientation="horizontal" >
++        android:orientation="horizontal">
+ 
+         <TextView
+             android:layout_width="wrap_content"
+@@ -44,8 +45,8 @@
+             android:layout_weight="1"
+             android:background="@android:color/transparent"
+             android:hint="@string/inputusername"
+-            android:maxLength="11"
+             android:inputType="text"
++            android:maxLength="11"
+             android:textSize="17sp" />
+     </LinearLayout>
+ 
+@@ -58,7 +59,7 @@
+         android:layout_width="match_parent"
+         android:layout_height="55dp"
+         android:background="#fff"
+-        android:orientation="horizontal" >
++        android:orientation="horizontal">
+ 
+         <TextView
+             android:layout_width="wrap_content"
+@@ -76,10 +77,10 @@
+             android:layout_gravity="center_vertical"
+             android:layout_marginLeft="10dp"
+             android:layout_weight="1"
+-            android:maxLength="16"
+             android:background="@android:color/transparent"
+             android:hint="@string/inputpassword"
+             android:inputType="textPassword"
++            android:maxLength="16"
+             android:textSize="17sp" />
+     </LinearLayout>
+ 
+@@ -88,16 +89,16 @@
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/md_btn_height"
+         android:layout_marginLeft="10dp"
+-        android:layout_marginRight="10dp"
+         android:layout_marginTop="30dp"
+-        android:text="@string/user_signin"
++        android:layout_marginRight="10dp"
+         android:background="@drawable/btn_radius_red_decoration"
++        android:text="@string/user_signin"
+         android:textSize="17sp" />
+ 
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:layout_marginTop="20dp" >
++        android:layout_marginTop="20dp">
+ 
+         <TextView
+             android:id="@+id/register"
+@@ -122,7 +123,7 @@
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:layout_weight="1" >
++        android:layout_weight="1">
+ 
+         <LinearLayout
+             android:id="@+id/id_fast_login"
+@@ -130,7 +131,7 @@
+             android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+             android:layout_marginBottom="50dp"
+-            android:orientation="horizontal" >
++            android:orientation="horizontal">
+ 
+             <TextView
+                 android:layout_width="wrap_content"
+@@ -155,8 +156,8 @@
+             android:layout_height="wrap_content"
+             android:layout_above="@id/id_fast_login"
+             android:layout_centerHorizontal="true"
++            android:layout_marginTop="20dp"
+             android:layout_marginBottom="20dp"
+-            android:layout_marginTop="20dp"
+             android:text="@string/fastlogin" />
+     </RelativeLayout>
+ 
