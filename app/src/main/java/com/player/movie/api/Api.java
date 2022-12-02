@@ -2,8 +2,8 @@ package com.player.movie.api;
 
 public class Api {
     //public static final String HOST = "http://10.28.253.144:8090/";
-    public static final String HOST = "http://43.143.203.160:8090/";
-    public static final String HOSTIMG = "http://43.143.203.160/";
+    public static final String HOST = "http:// :8090/";
+    public static final String HOSTIMG = "http:// .160/";
     public static final String GETUSERDATA = "users/{uid}";
     public static final String GETCATEGORYLIST = "movies/getCategoryList";
     public static final String GETKEYWORD = "movies/getKeyWord";
