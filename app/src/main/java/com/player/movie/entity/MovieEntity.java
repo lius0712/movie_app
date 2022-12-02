@@ -3,31 +3,31 @@ package com.player.movie.entity;
 import java.util.Date;
 
 public class MovieEntity {
-    private Long id;//主键
+    private Long id;
     private Long movieId;
-    private String director;//导演
-    private String star;//主演
-    private String type;//类型
-    private String countryLanguage;//国家/语言
-    private String viewingState;//观看状态
-    private String releaseTime;//上映时间
-    private String plot;//剧情
-    private Date updateTime;//更新时间
-    private String movieName;//电影名称
-    private String isRecommend;//是否推荐，0:不推荐，1:推荐
-    private String img;//电影海报
+    private String director;
+    private String star;
+    private String type;
+    private String countryLanguage;
+    private String viewingState;
+    private String releaseTime;
+    private String plot;
+    private Date updateTime;
+    private String movieName;
+    private String isRecommend;
+    private String img;
     private String classify;
-    private String sourceName;//来源名称，本地，骑士影院，爱奇艺
-    private String sourceUrl;//来源地址
-    private Date createTime;//创建时间
-    private String localImg;//本地图片
-    private String label;//播放集数
-    private String originalHref;//源地址
-    private String description;//简单描述
-    private String targetHref;//链接地址
-    private String useStatus;//0代表未使用，1表示正在使用，是banner和carousel图的才有
-    private Double score;//评分
-    private String category;//类目，值为banner首屏，carousel：滚动轮播
+    private String sourceName;
+    private String sourceUrl;
+    private Date createTime;
+    private String localImg;
+    private String label;
+    private String originalHref;
+    private String description;
+    private String targetHref;
+    private String useStatus;
+    private Double score;
+    private String category;
     private String ranks;
     private String userId;
     private String doubanUrl;
